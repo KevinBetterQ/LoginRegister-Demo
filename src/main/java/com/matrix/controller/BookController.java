@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.matrix.entity.Book;
@@ -30,4 +31,12 @@ public class BookController {
         model.addAttribute("books", books);
         return "Book/index";
     }
+    
+    @RequestMapping("/test")
+    public String test(ModelMap model) {
+    	model.addAttribute("info", "#login");
+        model.addAttribute("uname", "登录");
+		return "register";
+	}
+   
 }

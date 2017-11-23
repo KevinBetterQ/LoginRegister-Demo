@@ -38,7 +38,7 @@ public class SysUserController {
 	
 	@RequestMapping("/mybatis/delete/{id}")
 	public void mybatisdelete(@PathVariable Integer id){
-		service.deleteByIdWithMybatis(id);
+		//service.deleteByIdWithMybatis(id);
 		System.out.println("jdbc delete success");
 	}	
 	

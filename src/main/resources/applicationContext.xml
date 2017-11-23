@@ -9,10 +9,8 @@
         http://www.springframework.org/schema/context/spring-context-4.3.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-
-    <description>Spring公共配置 </description>
-    
-    <!-- 引入db.properties属性文件 -->
+        
+	 <!-- 引入db.properties属性文件 -->
     <context:property-placeholder location="classpath:db.properties" />
 
     <!--定义一个jdbc数据源，创建一个驱动管理数据源的bean -->
@@ -24,34 +22,32 @@
     	<property name="password" value="${jdbc.password}" />
  	</bean>
 
-    
-    <!-- MyBatis配置  -->
-    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <!-- 指定数据源 -->
-        <property name="dataSource" ref="jdbcDataSource" />
-        <!--自动扫描entity下的所有类 -->
-        <property name="typeAliasesPackage" value="com.matrix.entity;"></property><!-- 多个路径用分号隔开 -->
-        <!--指定sql映射xml文件的路径 -->
-        <property name="mapperLocations"
-            value="classpath:mybatis/*Mapper.xml"></property>
-        <property name="configLocation" 
-            value="classpath:mybatis/config.xml"/>
-    </bean>
-    
-    <!--自动扫描映射接口-->
-    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <!-- 指定sql会话工厂，在上面配置过的 -->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
-        <!-- 指定基础包，即自动扫描com.matrix.dao这个包下的所有接口类 -->
-        <property name="basePackage" value="com.matrix.dao"></property>
-    </bean>
-  
-    
-    <!--自动扫描组件 -->
-    <context:component-scan base-package="com.matrix">
-        <context:exclude-filter type="aspectj" expression="com.matrix.dao.*"/>
-    </context:component-scan>
-    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
-    
-    
+	<!-- MyBatis配置 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 指定数据源 -->
+		<property name="dataSource" ref="jdbcDataSource" />
+		<!--自动扫描entity下的所有类 -->
+		<property name="typeAliasesPackage" value="com.matrix.entity;"></property><!-- 多个路径用分号隔开 -->
+		<!--指定sql映射xml文件的路径 -->
+		<property name="mapperLocations" value="classpath:mybatis/*Mapper.xml"></property>
+		<property name="configLocation" value="classpath:mybatis/config.xml" />
+	</bean>
+
+	<!--自动扫描映射接口 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定sql会话工厂，在上面配置过的 -->
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+		<!-- 指定基础包，即自动扫描com.matrix.dao这个包下的所有接口类 -->
+		<property name="basePackage" value="com.matrix.dao"></property>
+	</bean>
+
+
+	<!--自动扫描组件 -->
+	<context:component-scan base-package="com.matrix">
+		<context:exclude-filter type="aspectj"
+			expression="com.matrix.dao.*" />
+	</context:component-scan>
+	<aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+
 </beans>
