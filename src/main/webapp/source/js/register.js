@@ -1,5 +1,5 @@
 /**
- * Created by wsx on 2016/10/21.
+ * Created by qwk on 2017/11/23.
  */
 $(function () {
     var uidflag = true;
@@ -118,9 +118,10 @@ $(function () {
             }
         }
     });
-    $('#register_bt').click(function () {
+
+   $('#register_bt').click(function () {
         if (uidflag && uemailflag && unameflag && uclassflag && uphoneflag && upasswdflag && upasswd_conflag) {
-            $.ajax({
+        	$.ajax({
                 type: "POST",
                 url: "userRegister",
                 data: { uid: $("#uid").val(),
@@ -132,6 +133,7 @@ $(function () {
                 },
                 success: function (data) {
                     alert(data);
+                    window.location.href = '/matrix';
                 }
             });
         }else{
@@ -140,8 +142,5 @@ $(function () {
         }
     });
 
-    $("#id_reset").click(function () {
-        $("#id_email").val('');
-        $("#id_password").val('');
-    });
+   
 });

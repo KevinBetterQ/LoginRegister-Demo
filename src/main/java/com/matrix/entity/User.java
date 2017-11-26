@@ -1,9 +1,12 @@
 package com.matrix.entity;
 
+import org.springframework.stereotype.Repository;
+
 /**
  * 用户类
  * Created by QWK on 2017/11/23.
  */
+@Repository
 public class User{
     private String uid; //id
     private String uemail;//邮箱

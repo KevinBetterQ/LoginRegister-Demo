@@ -1,9 +1,9 @@
 <%--
-  Created by eclipse.
-  User: qwk
-  Date: 2017/11/21
-  Time: 20:54
- 
+  Created by IntelliJ IDEA.
+  User: WSL
+  Date: 2016/10/21
+  Time: 15:45
+  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -105,15 +105,15 @@
 
 
 
-
 <script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="../../source/js/jquery.nicescroll.js"></script>
-<script src="../../source/js/owl.carousel.js"></script>
-<script src="../../source/js/wow.js"></script>
-<script src="../../source/js/script.js"></script>
-<script src="../../source/js/register.js"></script>
-<script src="../../source/js/md5.js"></script>
-<script src="../../source/js/logcheck.js"></script>
+<script src="source/js/jquery.nicescroll.js"></script>
+<script src="source/js/owl.carousel.js"></script>
+<script src="source/js/wow.js"></script>
+<script src="source/js/script.js"></script>
+ <script src="source/js/register.js"></script> 
+<script src="source/js/logcheck.js"></script>
+<script src="source/js/md5.js"></script>
+
 </body>
 </html>

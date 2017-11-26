@@ -6,18 +6,18 @@
     <cache eviction="FIFO" flushInterval="60000" size="500" readOnly="true"></cache>
 
 	<insert id="insertUser" parameterType="User"  flushCache="true">
-		insert into t_user values(#{uid}, #{uemail}, #{passwd}, #{uname}, #{uclass}, #{uphone}, #{urole}, #{uscore}, #{regtime} )
+		insert into t_user values(#{uid}, #{uemail}, #{passwd}, #{uname}, #{uclass}, #{uphone}, #{urole}, now(), #{uscore} )
 	</insert>
 	
 	<delete id="deleteUser" parameterType="String" flushCache="true">
 	   DELETE from t_user where uid=#{uid}
 	</delete>
 	
-	<select id="queryById" parameterType="String" resultType="List" useCache="false">
+	<select id="queryById" parameterType="String" resultType="User" >
 	    select * from t_user where uid=#{uid}
 	</select>
 	
-	<select id="queryAll" resultType="List">
+	<select id="queryAll" resultType="User">
 	    select * from t_user
 	</select>
     

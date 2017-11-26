@@ -1,7 +1,7 @@
 /*
  @description登陆表单验证
- @author wsx
- @time 16/10/19
+ @author qwk
+ @time 17/11/23
  */
 $(document).ready(function () {
 
