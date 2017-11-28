@@ -12,5 +12,7 @@ public interface UserService {
 	public List<User> queryById(String uid);
 	public List<User> queryAll();
 	
-	public boolean checkUidAvailable(String uid);
+	public boolean checkUidAvailable(String uid);//验证注册id是否存在
+	public User checkLogin(String uid, String passwd);//登陆验证
+	public User checkLoginConsole(String uid, String passwd);//后台登陆验证
 }

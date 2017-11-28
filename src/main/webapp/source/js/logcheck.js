@@ -24,7 +24,7 @@ $(document).ready(function () {
             success: function (data) {
                 if (data == "true") {
                     alert("登录成功");
-                    window.location.href = '/';
+                    window.location.href = '/matrix';
                 } else {
                     alert("用户名或密码错误");
                 }

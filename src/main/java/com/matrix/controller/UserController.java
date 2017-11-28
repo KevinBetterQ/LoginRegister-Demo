@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,14 +16,40 @@ import com.matrix.entity.User;
 import com.matrix.service.impl.UserServiceImpl;
 
 @Controller
-@RequestMapping("/")
 public class UserController {
 
 	@Resource
 	UserServiceImpl userService;
-	
 	@Resource
 	User user;
+	
+	//登录验证
+	@RequestMapping("/login")
+	public void loginUser(@RequestParam("uid") String uid, @RequestParam("passwd") String passwd, HttpSession session, HttpServletResponse response) {
+        System.out.println("/login");
+		try {
+            User user = userService.checkLogin(uid, passwd);
+            if (null != user) {
+                session.setAttribute("user", user);
+                response.getWriter().print("true");
+            } else {
+                response.getWriter().print("false");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+	//用户退出
+	@RequestMapping("/logout")
+	public String LogOutputStream(ModelMap model, HttpSession session){
+		session.removeAttribute("user");
+		User user = (User) session.getAttribute("user");
+        if (null == user) {
+            model.addAttribute("info", "#login");
+            model.addAttribute("uname", "登录");
+        }
+        return "index";
+	}
 	
 	//用户注册界面
 	@RequestMapping("/register")
@@ -56,7 +81,6 @@ public class UserController {
 			e.printStackTrace();
 		}
 	}
-	
 	
 	
 	//检查用户是否存在

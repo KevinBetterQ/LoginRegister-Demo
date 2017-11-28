@@ -20,5 +20,10 @@
 	<select id="queryAll" resultType="User">
 	    select * from t_user
 	</select>
+	
+	<select id="queryIdPasswd"  resultType="User" >
+	    select * from t_user where uid=#{0} and passwd=#{1}
+	</select>
+	
     
 </mapper>
